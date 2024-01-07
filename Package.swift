@@ -6,10 +6,10 @@ import PackageDescription
 let package = Package(
     name: "SkeletonUI",
     platforms: [
-        .iOS(.v13),
-        .macOS(.v10_15),
-        .tvOS(.v13),
-        .watchOS(.v7),
+        .iOS(.v14),
+        .macOS(.v11),
+        .tvOS(.v14),
+        .watchOS(.v8),
     ],
     products: [
         .library(name: "SkeletonUI", targets: ["SkeletonUI"]),
