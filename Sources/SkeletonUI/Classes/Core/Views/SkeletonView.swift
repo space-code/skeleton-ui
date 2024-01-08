@@ -102,9 +102,9 @@ public struct SkeletonView<
     ) -> some View {
         switch viewType {
         case .list:
-            return AnyView(List(.zero ..< (data.isEmpty ? quantity : data.count), id: \.self, rowContent: content))
+            return AnyView(List(.zero ..< (isEnabled ? quantity : data.count), id: \.self, rowContent: content))
         case .plain:
-            return AnyView(ForEach(.zero ..< (data.isEmpty ? quantity : data.count), id: \.self, content: content))
+            return AnyView(ForEach(.zero ..< (isEnabled ? quantity : data.count), id: \.self, content: content))
         }
     }
 }
@@ -115,37 +115,3 @@ private extension CGFloat {
     /// Skeleton corner radius.
     static let cornerRadius = 8.0
 }
-
-// MARK: - Previews
-
-#if DEBUG
-    struct ContentView_Previews: PreviewProvider {
-        struct Item: Identifiable {
-            let id = UUID()
-            let text: String
-        }
-
-        static let data: [Item] = [Item(text: "1")]
-
-        static var previews: some View {
-            ForEach(ColorScheme.allCases, id: \.self) {
-                defaultView.preferredColorScheme($0)
-            }
-        }
-
-        private static var defaultView: some View {
-            SkeletonView(
-                behavior: .manually(isEnabled: true),
-                data: data,
-                quantity: 7,
-                configuration: SkeletonConfiguration(
-                    numberOfLines: 2,
-                    scales: [0.7, 0.5],
-                    insets: .init(top: 8, leading: 0, bottom: 8, trailing: 0)
-                )
-            ) { data in
-                Text(data?.text ?? "")
-            }
-        }
-    }
-#endif
