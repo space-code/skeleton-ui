@@ -5,6 +5,8 @@
 
 import SwiftUI
 
+// MARK: - SkeletonConfiguration
+
 /// A struct that provides configuration for a skeleton view.
 public struct SkeletonConfiguration {
     // MARK: Properties
@@ -37,7 +39,7 @@ public struct SkeletonConfiguration {
         numberOfLines: Int = 4,
         scales: [CGFloat] = [],
         spacing: CGFloat = 8.0,
-        insets: EdgeInsets = .init(.zero),
+        insets: EdgeInsets = EdgeInsets.zero,
         gradient: Gradient = SkeletonConstants.gradient,
         animation: Animation = SkeletonConstants.animation
     ) {
@@ -48,4 +50,10 @@ public struct SkeletonConfiguration {
         self.gradient = gradient
         self.animation = animation
     }
+}
+
+// MARK: - Constants
+
+public extension EdgeInsets {
+    static let zero = EdgeInsets(top: .zero, leading: .zero, bottom: .zero, trailing: .zero)
 }

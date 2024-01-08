@@ -14,9 +14,20 @@ let package = Package(
     products: [
         .library(name: "SkeletonUI", targets: ["SkeletonUI"]),
     ],
-    dependencies: [],
+    dependencies: [
+        .package(
+            url: "https://github.com/pointfreeco/swift-snapshot-testing",
+            from: "1.12.0"
+        ),
+    ],
     targets: [
         .target(name: "SkeletonUI", dependencies: []),
-        .testTarget(name: "SkeletonUITests", dependencies: ["SkeletonUI"]),
+        .testTarget(
+            name: "SkeletonUITests",
+            dependencies: [
+                "SkeletonUI",
+                .product(name: "SnapshotTesting", package: "swift-snapshot-testing"),
+            ]
+        ),
     ]
 )
