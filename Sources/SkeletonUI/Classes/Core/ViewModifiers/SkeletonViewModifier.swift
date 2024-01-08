@@ -7,6 +7,7 @@ import SwiftUI
 
 // MARK: - SkeletonViewModifier
 
+/// A view modifier that applies a skeleton modifier to a view.
 public struct SkeletonViewModifier<ContentView: View>: ViewModifier {
     // MARK: Properties
 
@@ -64,6 +65,14 @@ public struct SkeletonViewModifier<ContentView: View>: ViewModifier {
 // MARK: - Extensions
 
 public extension View {
+    /// Applies a skeleton loading effect to the view.
+    ///
+    /// - Parameters:
+    ///   - isEnabled: A flag indicating whether the skeleton loading effect is enabled.
+    ///   - configuration: The configuration specifying the appearance of the skeleton loading effect.
+    ///   - content: A closure providing the content to be displayed within the skeleton loading effect.
+    ///
+    /// - Returns: A modified view with or without the skeleton loading effect based on the isEnabled flag.
     func skeleton<ContentView: View>(
         isEnabled: Bool,
         configuration: SkeletonConfiguration = SkeletonConfiguration(),

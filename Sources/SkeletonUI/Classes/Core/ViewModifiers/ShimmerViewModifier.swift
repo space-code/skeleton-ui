@@ -7,6 +7,7 @@ import SwiftUI
 
 // MARK: - ShimmerViewModifier
 
+/// A view modifier that applies a shimmer effect to the view.
 public struct ShimmerViewModifier: ViewModifier {
     // MARK: Properties
 
@@ -41,6 +42,14 @@ public struct ShimmerViewModifier: ViewModifier {
 // MARK: - Extensions
 
 public extension View {
+    /// Applies a shimmer effect to the view when isActive is true.
+    ///
+    /// - Parameters:
+    ///   - isActive: A flag indicating whether the shimmer effect is active.
+    ///   - gradient: The gradient used for the shimmer effect.
+    ///   - animation: The animation applied to the shimmer effect.
+    ///
+    /// - Returns: A modified view with or without the shimmer effect based on the isActive flag.
     @ViewBuilder
     func shimmering(
         isActive: Bool,

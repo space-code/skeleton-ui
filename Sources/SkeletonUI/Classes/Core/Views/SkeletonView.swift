@@ -19,6 +19,8 @@ public struct SkeletonView<
 
     // MARK: Properties
 
+    /// The view type.
+    private let viewType: SkeletonViewType
     /// The presentation behavior.
     private let behavior: SkeletonPresentationBehavior
     /// The data collection to be displayed in the view.
@@ -46,6 +48,7 @@ public struct SkeletonView<
     /// Creates a new `SkeletonView` instance.
     ///
     /// - Parameters:
+    ///   - viewType: The view type.
     ///   - behavior: The presentation behavior.
     ///   - data: The data collection to be displayed in the view.
     ///   - quantity: The quantity of items to be displayed if the data collection is empty.
@@ -53,6 +56,7 @@ public struct SkeletonView<
     ///   - builder: A closure that provides the real content view for each item in the data collection.
     ///   - skeletonBuilder: A closure that provides the skeleton placeholder content for each item in the data collection.
     public init(
+        viewType: SkeletonViewType = .list,
         behavior: SkeletonPresentationBehavior = .automatic,
         data: Data,
         quantity: Int,
@@ -61,6 +65,7 @@ public struct SkeletonView<
         @ViewBuilder skeletonBuilder: @escaping (_ index: Int) -> SkeletonContent =
             { _ in RoundedRectangle(cornerRadius: .cornerRadius) }
     ) {
+        self.viewType = viewType
         self.behavior = behavior
         self.data = data
         self.quantity = quantity
@@ -72,13 +77,34 @@ public struct SkeletonView<
     // MARK: View
 
     public var body: some View {
-        List(.zero ..< (data.isEmpty ? quantity : data.count), id: \.self) { [self] index in
+        containerView(viewType) { index in
             builder(data.isEmpty ? nil : Array(data)[safe: index])
                 .skeleton(
                     isEnabled: isEnabled,
                     configuration: configuration,
                     content: skeletonBuilder
                 )
+        }
+    }
+
+    // MARK: Private
+
+    /// Create a container view based on the view type.
+    ///
+    /// - Parameters:
+    ///   - viewType: The view type.
+    ///   - content: A closure that provides the real content view for each item in the data collection.
+    ///
+    /// - Returns: A view with the specific type.
+    private func containerView(
+        _ viewType: SkeletonViewType,
+        @ViewBuilder content: @escaping (Range<Int>.Element) -> some View
+    ) -> some View {
+        switch viewType {
+        case .list:
+            return AnyView(List(.zero ..< (data.isEmpty ? quantity : data.count), id: \.self, rowContent: content))
+        case .plain:
+            return AnyView(ForEach(.zero ..< (data.isEmpty ? quantity : data.count), id: \.self, content: content))
         }
     }
 }
