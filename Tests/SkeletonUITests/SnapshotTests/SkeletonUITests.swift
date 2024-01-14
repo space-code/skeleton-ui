@@ -44,7 +44,7 @@ final class SkeletonUITests: XCTestCase {
                         spacing: .spacing,
                         insets: EdgeInsets(top: .spacing, leading: .spacing, bottom: .spacing, trailing: .spacing)
                     ),
-                    builder: { text in Text(text?.text ?? "") }
+                    builder: { text, _ in Text(text?.text ?? "") }
                 ),
                 as: [.image(layout: .device(config: config), traits: .dark)],
                 testName: #function + prefix
@@ -109,7 +109,7 @@ final class SkeletonUITests: XCTestCase {
     // MARK: Private
 
     @ViewBuilder
-    private func builder(_ item: Item?) -> some View {
+    private func builder(_ item: Item?, index _: Int) -> some View {
         item.map { Text($0.text) }
     }
 }
