@@ -15,7 +15,7 @@ public struct SkeletonView<
 >: View where Data.Element: Identifiable {
     // MARK: Types
 
-    public typealias ContentBuilder = (_ data: Data.Element?) -> Content
+    public typealias ContentBuilder = (_ data: Data.Element?, _ index: Int) -> Content
 
     // MARK: Properties
 
@@ -78,7 +78,7 @@ public struct SkeletonView<
 
     public var body: some View {
         containerView(viewType) { index in
-            builder(data.isEmpty ? nil : Array(data)[safe: index])
+            builder(data.isEmpty ? nil : Array(data)[safe: index], index)
                 .skeleton(
                     isEnabled: isEnabled,
                     configuration: configuration,
