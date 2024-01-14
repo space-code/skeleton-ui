@@ -63,7 +63,7 @@ public struct SkeletonView<
         configuration: SkeletonConfiguration = SkeletonConfiguration(),
         @ViewBuilder builder: @escaping ContentBuilder,
         @ViewBuilder skeletonBuilder: @escaping (_ index: Int) -> SkeletonContent =
-            { _ in RoundedRectangle(cornerRadius: .cornerRadius) }
+            { _ in RoundedRectangle(cornerRadius: 8.0) }
     ) {
         self.viewType = viewType
         self.behavior = behavior
@@ -107,11 +107,4 @@ public struct SkeletonView<
             return AnyView(ForEach(.zero ..< (isEnabled ? quantity : data.count), id: \.self, content: content))
         }
     }
-}
-
-// MARK: - Constants
-
-private extension CGFloat {
-    /// Skeleton corner radius.
-    static let cornerRadius = 8.0
 }
