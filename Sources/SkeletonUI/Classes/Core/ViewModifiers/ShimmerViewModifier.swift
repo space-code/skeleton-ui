@@ -34,8 +34,8 @@ public struct ShimmerViewModifier: ViewModifier {
     // MARK: ViewModifier
 
     public func body(content: Content) -> some View {
-        content
-            .mask(GradientAnimationView(gradient: gradient, animation: animation))
+        GradientAnimationView(gradient: gradient, animation: animation)
+            .mask(content)
     }
 }
 
