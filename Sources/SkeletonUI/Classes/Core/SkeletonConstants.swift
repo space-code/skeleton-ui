@@ -15,9 +15,9 @@ public enum SkeletonConstants {
     /// Default gradient for the skeleton view.
     public static let gradient: Gradient = .init(
         stops: [
-            .init(color: .black.opacity(.opacity), location: 0.8),
-            .init(color: .black, location: 0.9),
-            .init(color: .black.opacity(.opacity), location: 1.0),
+            .init(color: .gray.opacity(.opacity), location: 0.8),
+            .init(color: .gray, location: 0.9),
+            .init(color: .gray.opacity(.opacity), location: 1.0),
         ]
     )
 }
