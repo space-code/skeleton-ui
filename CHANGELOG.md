@@ -1,14 +1,19 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## [Unreleased]
+#### 1.x Releases
+- `1.0.x` Releases - [1.0.0](#100) | [1.0.1](#101) | [1.0.2](#102)
+
+## [1.0.2](https://github.com/space-code/skeleton-ui/releases/tag/1.0.2)
+Released on 2024-07-19.
 
 #### Added
 - Add an index to each view
-  - Added in Pull Request[#5](https://github.com/space-code/skeleton-ui/pull/5).
+  - Added in Pull Request[#6](https://github.com/space-code/skeleton-ui/pull/6).
 
-#### 1.x Releases
-- `1.0.x` Releases - [1.0.0](#100) | [1.0.1](#101)
+#### Updated
+- Update the masking logic
+  - Updated in Pull Request [#7](https://github.com/space-code/skeleton-ui/pull/7).
 
 ## [1.0.1](https://github.com/space-code/skeleton-ui/releases/tag/1.0.1)
 Released on 2024-01-14.
