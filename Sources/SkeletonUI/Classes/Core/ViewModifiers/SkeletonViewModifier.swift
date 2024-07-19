@@ -55,8 +55,8 @@ public struct SkeletonViewModifier<ContentView: View>: ViewModifier {
                     content(index)
                         .frame(width: (configuration.scales[safe: index] ?? 1) * geometry.size.width)
                 }
+                .shimmering(isActive: true, gradient: configuration.gradient, animation: configuration.animation)
             }
-            .shimmering(isActive: true, gradient: configuration.gradient, animation: configuration.animation)
         }
         .padding(configuration.insets)
     }
