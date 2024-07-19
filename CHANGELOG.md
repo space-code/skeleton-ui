@@ -14,6 +14,8 @@ Released on 2024-07-19.
 #### Updated
 - Update the masking logic
   - Updated in Pull Request [#7](https://github.com/space-code/skeleton-ui/pull/7).
+- Update the snapshot tests
+  - Updated in Pull Request [#8](https://github.com/space-code/skeleton-ui/pull/8).
 
 ## [1.0.1](https://github.com/space-code/skeleton-ui/releases/tag/1.0.1)
 Released on 2024-01-14.
