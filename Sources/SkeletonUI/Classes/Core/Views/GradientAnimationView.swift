@@ -55,7 +55,6 @@ struct GradientAnimationView: View {
 
     var body: some View {
         LinearGradient(gradient: gradient, startPoint: startPoint, endPoint: endPoint)
-            .blendMode(.screen)
             .animation(animation, value: isAnimating)
             .onAppear { isAnimating = true }
     }
